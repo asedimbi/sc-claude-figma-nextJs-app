@@ -10,13 +10,14 @@ import {
 import NavItem from "./NavItem";
 
 const navItems = [
-  { icon: TrendingUp, label: "Inflation" },
-  { icon: Briefcase, label: "Employment" },
-  { icon: LineChart, label: "Interest Rates" },
-  { icon: BarChart2, label: "Economic Growth" },
-  { icon: Globe, label: "Exchange Rates" },
-  { icon: Home, label: "Housing" },
-  { icon: ShoppingCart, label: "Consumer Spending" },
+  { icon: TrendingUp, label: "Key Indicators", href: "/dashboard" },
+  { icon: TrendingUp, label: "Inflation", href: "/inflation" },
+  { icon: Briefcase, label: "Employment", href: "/employment" },
+  { icon: LineChart, label: "Interest Rates", href: "/interest-rates" },
+  { icon: BarChart2, label: "Economic Growth", href: "/economic-growth" },
+  { icon: Globe, label: "Exchange Rates", href: "/exchange-rates" },
+  { icon: Home, label: "Housing", href: "/housing" },
+  { icon: ShoppingCart, label: "Consumer Spending", href: "/consumer-spending" },
 ];
 
 export default function Sidebar() {
@@ -29,16 +30,15 @@ export default function Sidebar() {
 
       <nav className="flex-1 px-3 py-4">
         <ul className="space-y-1">
-          <NavItem icon={TrendingUp} label="Key Indicators" active />
           {navItems.map((item) => (
-            <NavItem key={item.label} icon={item.icon} label={item.label} />
+            <NavItem key={item.href} icon={item.icon} label={item.label} href={item.href} />
           ))}
         </ul>
       </nav>
 
       <div className="px-4 py-4 border-t border-gray-100">
         <p className="text-xs text-gray-400 leading-relaxed">
-          Data provided by Federal Reserve Economic Data (FRED)
+          Data mocked based on Federal Reserve Economic Data (FRED)
         </p>
       </div>
     </aside>

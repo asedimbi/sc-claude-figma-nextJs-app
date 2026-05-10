@@ -1,16 +1,24 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { LucideIcon } from "lucide-react";
 
 type NavItemProps = {
   icon: LucideIcon;
   label: string;
-  active?: boolean;
+  href: string;
 };
 
-export default function NavItem({ icon: Icon, label, active }: NavItemProps) {
+export default function NavItem({ icon: Icon, label, href }: NavItemProps) {
+  const pathname = usePathname();
+  const active = pathname === href || (href !== "/" && pathname.startsWith(href));
+
   return (
     <li>
-      <div
-        className={`flex items-center justify-between px-3 py-2.5 rounded-md cursor-pointer ${
+      <Link
+        href={href}
+        className={`flex items-center justify-between px-3 py-2.5 rounded-md ${
           active
             ? "bg-blue-600 text-white"
             : "text-gray-700 hover:bg-gray-100"
@@ -32,7 +40,7 @@ export default function NavItem({ icon: Icon, label, active }: NavItemProps) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           )}
         </svg>
-      </div>
+      </Link>
     </li>
   );
 }
